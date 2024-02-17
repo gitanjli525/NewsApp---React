@@ -283,7 +283,7 @@ export class News extends Component {
   ];
   constructor() {
     super();
-    console.log("Hello I am a constructor form News Component");
+    //console.log("Hello I am a constructor form News Component");
     this.state = {
       articles: this.articles,
       loading: false,
@@ -294,18 +294,20 @@ export class News extends Component {
     let url =
       "https://newsapi.org/v2/top-headlines?country=in&apiKey=bac29c736a124a108347456b0b7b5526";
     let data = await fetch(url);
-    let parsedData = await data.json;
-    console.log(parsedData);
+    let parsedData = await data.json();
+    // console.log("response from api haha");
+    // console.log(parsedData);
     this.setState({ articles: parsedData.articles });
   }
 
   render() {
+    // console.log("articles array", this.state.articles);
     return (
       <div className="container my-4">
         <h2>NewsMonkey - Top Headlines</h2>
 
         <div className="row">
-          {this.state.articles.map((element) => {
+          {this.state.articles.map(element => {
             return (
               <div className="col-md-4" key={element.url}>
                 <NewsItem
